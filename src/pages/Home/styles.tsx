@@ -52,8 +52,8 @@ export const ResultsHeader = styled.div`
     }
 
     @media(max-width: 1200px) {
-        width: calc(100vw - 20px);
-        padding: 0 10px;
+        width: calc(100vw - 32px);
+        padding: 0 16px;
     }
 `
 

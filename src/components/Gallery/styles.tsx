@@ -5,16 +5,18 @@ export const GalleryContainer = styled.div`
     margin: 58px auto;
 
     @media(max-width: 1220px) {
-        width: calc(100vw - 30px);
+        width: calc(100vw - 32px);
+        margin: 58px 16px;
     }
 
     @media(max-width: 820px) {
-        width: calc(100vw - 10px);
+        width: calc(100vw - 36px);
+        margin: 58px 16px;
     }
 
     @media(max-width: 500px) {
-        width: calc(100vw - 42px);
-        margin: 58px 10px;
+        width: calc(100vw - 56px);
+        margin: 58px 16px;
     }
 `
 

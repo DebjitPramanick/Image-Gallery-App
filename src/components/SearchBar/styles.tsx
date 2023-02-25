@@ -46,7 +46,6 @@ export const SearchSuggestionsContainer = styled.div`
     right: 0;
     overflow-y: scroll;
     height: 200px;
-    padding: 0;
 
     .suggestion-item{
         padding: 21px 17px;
