@@ -28,11 +28,13 @@ const Gallery = ({ images, fetchMoreImages }: PropsType) => {
 
     const handlePopup = (image?: any) => {
         if (popupState.show) {
+            document.body.style.overflowY = 'scroll';
             setPopupState({
                 show: false,
                 image: null
             })
         } else {
+            document.body.style.overflowY = 'hidden';
             setPopupState({
                 show: true,
                 image: image

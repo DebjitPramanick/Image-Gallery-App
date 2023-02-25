@@ -26,5 +26,5 @@ export const darkTheme = {
     popUpBG: "#232323",
     searchBG: '#323232',
     searchBorder: "#858484",
-    suggestionsBG: '#4F4F4F'
+    suggestionsBG: '#323232'
 }

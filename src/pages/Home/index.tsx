@@ -21,14 +21,16 @@ const Home = () => {
                     <SearchBar />
                 </Banner>
             )}
-            <ResultsHeader>
-                <p className='head-text'>{query}</p>
-                <SuggestionsContainer>
-                    {relatedSearches.map(relSearch => (
-                        <p className='related-searches' onClick={() => handleQuery(relSearch)}>{relSearch}</p>
-                    ))}
-                </SuggestionsContainer>
-            </ResultsHeader>
+            {queryView && (
+                <ResultsHeader>
+                    <p className='head-text'>{query}</p>
+                    <SuggestionsContainer>
+                        {relatedSearches.map(relSearch => (
+                            <p className='related-searches' onClick={() => handleQuery(relSearch)}>{relSearch}</p>
+                        ))}
+                    </SuggestionsContainer>
+                </ResultsHeader>
+            )}
 
             <Gallery images={images} fetchMoreImages={fetchMoreImages} />
 

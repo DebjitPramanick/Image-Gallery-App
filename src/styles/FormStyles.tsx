@@ -13,7 +13,8 @@ export const Input = styled.input`
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    width: 100%
+    width: 100%;
+    box-sizing: border-box;
 `
 
 export const LoadMoreButton = styled.button`

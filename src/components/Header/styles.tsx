@@ -23,81 +23,41 @@ export const HeaderContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 
-    .page-links{
-        a {
-            font-style: normal;
-            font-weight: 700;
-            font-size: 12px;
-            line-height: 15px;
-            color: ${props => props.theme.headerText};
-            text-decoration: none;
+    .header-search-container {
+        @media(max-width: 500px) {
+            display: none;
         }
     }
 
-    .theme-controller {
-        p{
-            font-style: normal;
-            font-weight: 700;
-            font-size: 12px;
-            line-height: 15px;
-            color: ${props => props.theme.headerText};
-            text-decoration: none;
-        }
-    }
-
-    @media(max-width: 1000px) {
+    .mobile-icons {
         display: none;
+        
+        .mobile-menu-icon {
+            display: none;
+            @media(max-width: 1042px) {
+                display: block;
+            }
+        }
+
+        .mobile-search-icon {
+            display: none;
+            @media(max-width: 500px) {
+                display: block;
+            }
+        }
+
+        @media(max-width: 1042px) {
+            display: flex;
+        }
     }
 
-    @media(max-width: 1200px) {
+    @media(max-width: 1210px) {
         width: calc(100% - 32px);
     }
 
     
-`
-
-export const MobileHeaderContent = styled.div`
-    height: 100%;
-    margin: auto;
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    padding: 0 16px;
-
-    .page-links{
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 16px;
-        a {
-            font-style: normal;
-            font-weight: 700;
-            font-size: 12px;
-            line-height: 15px;
-            color: ${props => props.theme.headerText};
-            text-decoration: none;
-        }
-    }
-
-    .theme-controller {
-        padding: 0 16px;
-        justify-content: space-between;
-        margin-top: 20px;
-        p{
-            font-style: normal;
-            font-weight: 700;
-            font-size: 12px;
-            line-height: 15px;
-            color: ${props => props.theme.headerText};
-            text-decoration: none;
-        }
-    }
-
-    @media(max-width: 1000px) {
-        display: flex;
-    }
 `
 
 export const FloatingContainer = styled.div<{height: string}>`
@@ -107,7 +67,7 @@ export const FloatingContainer = styled.div<{height: string}>`
     left: 0;
     right: 0;
     overflow: hidden;
-    padding: 0;
+    padding: 0 16px;
 
     &.expand{
         height: ${(props: any) => props.height};
@@ -120,3 +80,60 @@ export const FloatingContainer = styled.div<{height: string}>`
     }
 `
 
+export const PageLinks = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    a {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        color: ${props => props.theme.headerText};
+        text-decoration: none;
+    }
+
+    &.mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+
+        @media(max-width: 1000px) {
+            display: flex;
+        }
+    }
+
+    @media(max-width: 1042px) {
+        display: none;
+    }
+`
+
+export const ThemeController = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        color: ${props => props.theme.headerText};
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    &.mobile {
+        justify-content: space-between;
+        margin-top: 20px;
+
+        @media(max-width: 1000px) {
+            display: flex;
+        }
+    }
+
+    @media(max-width: 1042px) {
+        display: none;
+    }
+`

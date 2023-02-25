@@ -22,14 +22,15 @@ export const HeaderBarContainer = styled.div`
     border-radius: 6px;
     display: flex;
     align-items: center;
-    width: 400px;
+    width: 100%;
     gap: 10px;
     padding: 6px 18px;
     border-radius: 8px;
     position: relative;
+    box-sizing: border-box;
 
-    @media(max-width: 1000px){
-        width: calc(100% - 72px);
+    @media(max-width: 1042px){
+        width: 100%;
         margin: auto;
     }
 `
