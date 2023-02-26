@@ -31,7 +31,7 @@ const SearchSuggestions: React.FC<{
             {suggestions.map((sug) => (
                 <div className='suggestion-item' key={sug.id} onClick={() => selectQuery(sug.query)}
                     style={type === 'banner' ? { color: "#4F4F4F" } : {}}>
-                    {sug.query}
+                    <p onClick={() => selectQuery(sug.query)}>{sug.query}</p>
                 </div>
             ))}
         </SearchSuggestionsContainer>
