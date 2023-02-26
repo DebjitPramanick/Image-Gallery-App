@@ -18,6 +18,7 @@ const SearchSuggestions: React.FC<{
     const {toggleMobileSearch} = useMobile()
 
     const selectQuery = (query: string) => {
+        console.log(query)
         handleQuery(query)
         setExpand(!expand)
         toggleMobileSearch(false)
@@ -30,7 +31,7 @@ const SearchSuggestions: React.FC<{
             {suggestions.map((sug) => (
                 <div className='suggestion-item' key={sug.id} onClick={() => selectQuery(sug.query)}
                     style={type === 'banner' ? { color: "#4F4F4F" } : {}}>
-                    <p>{sug.query}</p>
+                    {sug.query}
                 </div>
             ))}
         </SearchSuggestionsContainer>
