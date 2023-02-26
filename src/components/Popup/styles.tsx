@@ -79,6 +79,10 @@ export const UserDetails = styled.div`
         overflow: hidden;
         white-space: nowrap;
         width: 130px;
+
+        @media(max-width: 720px) {
+            width: 100%;
+        }
     }
 
     .username-para{
@@ -87,6 +91,10 @@ export const UserDetails = styled.div`
         font-size: 12px;
         line-height: 18px;
         color: ${props => props.theme.subText};
+        
+        @media(max-width: 720px) {
+            width: 100%;
+        }
     }
 
     .downloads-text{

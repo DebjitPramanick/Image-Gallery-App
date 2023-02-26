@@ -29,7 +29,7 @@ const Header = () => {
     <HeaderContaier>
       <HeaderContent>
         <img src={theme === 'light' ? Logo : DarkModeLogo} alt="logo"
-          onClick={() => toggleQueryView(false)} />
+          onClick={() => toggleQueryView(false)} style={{cursor: 'pointer'}} />
         <div className='header-search-container' style={{width: '100%'}}>
           <SearchBar type='header' />
         </div>
