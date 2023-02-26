@@ -20,7 +20,7 @@ const ImageCard = ({ image, openPopup }: PropsType) => {
 
     return (
         <CardContainer>
-            <img src={urls.regular} alt="/" width={"100%"} style={{cursor: 'pointer'}}
+            <img src={urls.small} alt="/" width={"100%"} style={{cursor: 'pointer'}}
             onClick={() => openPopup(image)}/>
             <UserDetails>
                 <Flex gap={10} className="info-part">
