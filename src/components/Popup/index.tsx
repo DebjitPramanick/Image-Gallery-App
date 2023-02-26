@@ -16,6 +16,7 @@ import { Avatar, Flex } from '../../styles/ComponentStyles';
 import { DownloadButton } from '../../styles/FormStyles';
 import Loader from '../Loader';
 import { ImageContainer, Overlay, PopupContainer, ScrollContainer, TagsContainer, TagsHeading, UserDetails, PopupBody, Options, SocialHandleContainer } from './styles';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 interface PropsType {
   imageId: any;
@@ -29,6 +30,7 @@ const Popup = ({ imageId, closePopup }: PropsType) => {
   const [image, setImage] = useState<any>(null);
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(false);
+  const [showUser, setShowUser] = useState(false)
 
   useEffect(() => {
     fetchImageData()
@@ -62,7 +64,13 @@ const Popup = ({ imageId, closePopup }: PropsType) => {
                   <CloseIcon />
                 </div>
                 <ImageContainer>
-                  <img src={image?.urls.full} alt="/" />
+                  <LazyLoadImage
+                    src={image?.urls.full}
+                    alt={image?.description}
+                    effect="blur"
+                    placeholder={<img src={image?.urls.small} alt="/" />}
+                    afterLoad={() => setShowUser(true)}
+                  />
                   <Options>
                     <div style={{ display: "flex", gap: '8px', alignItems: 'center', cursor: 'pointer' }}>
                       <ShareButton />
@@ -73,47 +81,51 @@ const Popup = ({ imageId, closePopup }: PropsType) => {
                 </ImageContainer>
 
 
-                <UserDetails>
-                  <Flex gap={20} className="user-info-part">
-                    <Flex gap={10}>
-                      <Avatar src={user?.profile_image.medium} width={56} />
-                      <div style={{ width: 'fit-content' }}>
-                        <p className='name-para'>{user?.name}</p>
-                        <p className='username-para'>@{user?.username}</p>
-                      </div>
-                    </Flex>
-                    <SocialHandleContainer>
-                      {user?.social.instagram_username && (
-                        <Flex gap={4}>
-                          {theme === 'dark' ? <DarkModeIGIcon /> : <InstagramIcon />}
-                          <p className='social-handle'>/{user?.social.instagram_username}</p>
-                        </Flex>
-                      )}
-                      {user?.social.twitter_username && (
-                        <Flex gap={4}>
-                          {theme === 'dark' ? <DarkModeTwitterIcon /> : <TwitterIcon />}
-                          <p className='social-handle'>/{user?.social.twitter_username}</p>
-                        </Flex>
-                      )}
-                    </SocialHandleContainer>
-                  </Flex>
-                  <Flex gap={20}>
-                    <p className='downloads-text'>{formatNumber(image?.downloads)} downlods</p>
-                    <Flex gap={4}>
-                      {theme === 'dark' ? <DarkLikeIcon /> : <LikeIcon />}
-                      <p className='like-count'>{formatNumber(image?.likes)}</p>
-                    </Flex>
-                  </Flex>
-                </UserDetails>
-
-                {image?.tags.length > 0 && (
+                {showUser && (
                   <>
-                    <TagsHeading>Related Tags</TagsHeading>
-                    <TagsContainer>
-                      {image?.tags.map((tag: any) => (
-                        <div className='pic-tag'>{tag.title}</div>
-                      ))}
-                    </TagsContainer>
+                    <UserDetails>
+                      <Flex gap={20} className="user-info-part">
+                        <Flex gap={10}>
+                          <Avatar src={user?.profile_image.medium} width={56} />
+                          <div style={{ width: 'fit-content' }}>
+                            <p className='name-para'>{user?.name}</p>
+                            <p className='username-para'>@{user?.username}</p>
+                          </div>
+                        </Flex>
+                        <SocialHandleContainer>
+                          {user?.social.instagram_username && (
+                            <Flex gap={4}>
+                              {theme === 'dark' ? <DarkModeIGIcon /> : <InstagramIcon />}
+                              <p className='social-handle'>/{user?.social.instagram_username}</p>
+                            </Flex>
+                          )}
+                          {user?.social.twitter_username && (
+                            <Flex gap={4}>
+                              {theme === 'dark' ? <DarkModeTwitterIcon /> : <TwitterIcon />}
+                              <p className='social-handle'>/{user?.social.twitter_username}</p>
+                            </Flex>
+                          )}
+                        </SocialHandleContainer>
+                      </Flex>
+                      <Flex gap={20}>
+                        <p className='downloads-text'>{formatNumber(image?.downloads)} downlods</p>
+                        <Flex gap={4}>
+                          {theme === 'dark' ? <DarkLikeIcon /> : <LikeIcon />}
+                          <p className='like-count'>{formatNumber(image?.likes)}</p>
+                        </Flex>
+                      </Flex>
+                    </UserDetails>
+
+                    {image?.tags.length > 0 && (
+                      <>
+                        <TagsHeading>Related Tags</TagsHeading>
+                        <TagsContainer>
+                          {image?.tags.map((tag: any) => (
+                            <div className='pic-tag'>{tag.title}</div>
+                          ))}
+                        </TagsContainer>
+                      </>
+                    )}
                   </>
                 )}
               </>

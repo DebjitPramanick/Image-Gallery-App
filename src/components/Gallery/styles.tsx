@@ -28,6 +28,7 @@ export const CardContainer = styled.div`
     flex-grow: 1;
     overflow: hidden;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+    min-height: 200px;
 `
 
 export const UserDetails = styled.div`
