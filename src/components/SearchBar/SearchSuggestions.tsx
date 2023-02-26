@@ -18,7 +18,6 @@ const SearchSuggestions: React.FC<{
     const {toggleMobileSearch} = useMobile()
 
     const selectQuery = (query: string) => {
-        console.log(query)
         handleQuery(query)
         setExpand(!expand)
         toggleMobileSearch(false)

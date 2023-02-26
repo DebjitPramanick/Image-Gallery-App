@@ -38,8 +38,6 @@ export const ImagesProvider = ({ children }: any) => {
     const [relatedSearches, setRelatedSearches] = useState<string[]>([])
     const [queryView, setQueryView] = useState(false)
 
-    console.log(relatedSearches)
-
     useEffect(() => {
         fetchImages()
     }, [])
